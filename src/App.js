@@ -3,45 +3,30 @@
 
 import React from "react";
 
-function Food({name, rating}) {
-  return (
+class App extends React.Component{
+  state = {
+    count: 0
+  };
+  plus = () => {
+    console.log("plus");
+    this.setState(current => ({count: current.count + 1}));
+  };
+  minus = () => {
+    console.log("minus");
+    this.setState(current => ({count: current.count - 1}));
+  };
+
+  render(){
+    return (
     <div>
-      <h2>I like {name}</h2>
-      <h4>{rating}/5.0</h4>
+      <h1>the number is {this.state.count}</h1>
+      <button onClick={this.plus}>Plus</button>
+      <button onClick={this.minus}>Minus</button>
     </div>
     );
-}
-
-const foodILike = [
-  {
-    id:1,
-    name: "kimchi",
-    rating: 5
-  },
-  {
-    id:2,
-    name: "potato",
-    rating: 4.5
-  },
-  {
-    id:3,
-    name: "sweetpotato",
-    rating: 4.7
   }
-]
-
-function App() {
-  return (
-    <div>
-      {foodILike.map(dish => (
-        <Food
-          key={dish.id}
-          name={dish.name}
-          rating={dish.rating}
-        />
-      ))}
-    </div>
-  );
 }
+
+
 
 export default App;
